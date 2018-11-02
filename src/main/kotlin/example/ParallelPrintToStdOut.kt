@@ -5,11 +5,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-fun main(args: Array<String>) = runBlocking { // Waits until all coroutines are finished inside of it
-    serviceFunction()
+fun main(args: Array<String>) {
+    // runBlocking -- Waits until all coroutines are finished inside of it
+    runBlocking {
+        printThingsInParallel()
+    }
 }
 
-suspend fun serviceFunction() {
+suspend fun printThingsInParallel() {
     coroutineScope {
         val first = launch {
             (1..1000).forEach {
